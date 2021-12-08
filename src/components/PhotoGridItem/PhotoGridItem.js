@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 const PhotoGridItem = ({ id, src, alt, tags }) => {
+  let str = src.split('-').pop();
+  str = str.substring(0, str.length - 4);
   return (
     <article>
       <Anchor href={`/photos/${id}`}>
@@ -15,14 +17,14 @@ const PhotoGridItem = ({ id, src, alt, tags }) => {
             `}
             />
             <source
-            type="image/jpg"
+            type="image/jpeg"
             srcSet= {`
             ${src} 1x,
             ${src.replace('.jpg','@2x.jpg')} 2x,
             ${src.replace('.jpg','@3x.jpg')} 3x
             `}
             />
-          <Image src={src} alt="Photo of animal with dramatic facial expression." />
+          <Image src={src} alt={`Photo of ${str}  with dramatic facial expression.`} />
         </picture>
       </Anchor>
       <Tags>
